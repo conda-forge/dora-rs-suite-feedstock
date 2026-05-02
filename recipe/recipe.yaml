@@ -10,7 +10,7 @@ source:
   sha256: e31b9b8fb3fb442407a7ef4b258249bc41d100fd872d5417ebd5fecce6ea7748
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -25,14 +25,12 @@ outputs:
           - if: unix
             then:
               - cargo auditable install --locked --no-track --bins --root ${{ PREFIX }} --path binaries/cli
-            else:
-              - cargo auditable install --locked --no-track --bins --root %LIBRARY_PREFIX% --path binaries/cli
-          - if: unix
-            then:
               - mkdir -p $PREFIX/share/bash-completion/completions $PREFIX/share/zsh/site-functions $PREFIX/share/fish/vendor_completions.d
               - $PREFIX/bin/dora completion bash > $PREFIX/share/bash-completion/completions/dora
               - $PREFIX/bin/dora completion zsh  > $PREFIX/share/zsh/site-functions/_dora
               - $PREFIX/bin/dora completion fish > $PREFIX/share/fish/vendor_completions.d/dora.fish
+            else:
+              - cargo auditable install --locked --no-track --bins --root %LIBRARY_PREFIX% --path binaries/cli
           - if: win
             then:
               - mkdir %LIBRARY_PREFIX%\share\powershell\completions
