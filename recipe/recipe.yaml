@@ -1,5 +1,5 @@
 context:
-  version: "0.5.0"
+  version: "1.1.0"
 
 recipe:
   name: dora-rs-suite
@@ -7,10 +7,10 @@ recipe:
 
 source:
   url: https://github.com/dora-rs/dora/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: e31b9b8fb3fb442407a7ef4b258249bc41d100fd872d5417ebd5fecce6ea7748
+  sha256: 4a1197b46ada99365013a372de4687c955b6c44bb6a6711a7794fdc41eff81ef
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - package:
